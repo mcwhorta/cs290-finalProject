@@ -1,9 +1,53 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Brew Log Sign-In</title>
-	</head>
-	<body>
-	</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Beer Log Sign-in</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="login.css" rel="stylesheet">
+    <script src='login.js'></script>
+  </head>
+  <body onload="hideRegistration();">
+    <div class="container">
+      <div class="header">
+        <h2 class="text-muted">Welcome to the Beer Log!</h2>
+      </div>
+	  <p>We are pleased to present you with the opportunity to log the beers you have tried!</p>
+      <form id="form-signin" onsubmit="return validateSignOn();">
+        <h3 class="form-signin-heading">Please sign in</h3>
+        <div id="signOnErrMessages"></div>
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus pattern=".{8,30}" title="8 to 30 characters">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required pattern=".{8,30}" title="8 to 30 characters">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="button" onclick="showRegistration();">Register</button>
+      </form>
+    </div>
+    <div class="container">        
+      <form id="form-registration" onsubmit="return registerUser();">
+        <h3>Registration</h3>
+		<p>Note: You must be turning at least 21 years older this year to register!</p>
+        <div id="regErrMessages"></div>
+        <div class="form-group col-lg-12">
+          <label>Username (min characters: 8. max characters: 30)</label>
+          <input type="text" id="regUsername" class="form-control" required pattern=".{8,30}" title="8 to 30 characters" value="">
+        </div>
+        <div class="form-group col-lg-12">
+          <label>Birth Year (Format: YYYY): </label>
+          <input type="year" id="birthday" max="1994">
+        </div>
+        <div class="form-group col-lg-6">
+          <label>Password (min characters: 8. max characters: 30)</label>
+          <input type="password" id="regPassword" class="form-control" value="" required pattern=".{8,30}" title="8 to 30 characters">
+        </div>
+        <div class="form-group col-lg-6">
+          <label>Repeat Password (min characters: 8. max characters: 30)</label>
+          <input type="password" id="regRepeatPassword" class="form-control"  value="" required pattern=".{8,30}" title="8 to 30 characters">
+        </div>  
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
+        <button type="button" class="btn btn-lg btn-primary btn-block" onclick="showSignIn();">Cancel Registration</button>
+      </form>
+    </div>
+  </body>
 </html>
